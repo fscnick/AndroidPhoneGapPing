@@ -1,0 +1,31 @@
+<html>
+<body>
+	<SCRIPT type="text/javascript" src="cordova.js">
+	</SCRIPT>
+	<script type="text/javascript">
+		
+		var successFn= function(){
+			var div = document.getElementById("result");
+			div.innerHTML = div.innerHTML + 'True!<br>';
+		}
+		
+		var failFn= function(){
+			var div = document.getElementById("result");
+			div.innerHTML = div.innerHTML + 'False!<br>';
+		}
+		
+		var exec = function(){
+			var ipAddr=document.getElementById("ipText").value;
+			cordova.exec( successFn, failFn, 
+						'PhonegapPlugin',
+						'ping',[ipAddr]);
+		}
+    </script>
+
+    <h1>Hello PhoneGap</h1>
+	<h1>IP: </h1><input type="text" id="ipText" value="192.168.0.155">					
+	<input type="button" id="pingStart" value="PingStart" onClick="exec();">
+						
+	<div id="result"></div>
+</body>
+</html>
